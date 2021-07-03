@@ -6,6 +6,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Josefin Sans', sans-serif;
+    font-size: 18px;
 }
 /*---------------------------------*/
 /* BODY */
@@ -17,10 +18,112 @@ body {
     background-size: 100%;
 
     background-color: hsl(0, 0%, 98%);
+
+    padding: 60px 30px;
+}
+
+h1 {
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 13px;
+    font-size: 30px;
+    margin-bottom: 20px;
 }
 
 /*---------------------------------*/
+/* NEW TODO */
+/*---------------------------------*/
+.new-todo {
+    background: white;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+input {
+    padding: 10px;
+    width: 100%;
+    border: none;
+}
+input:focus {
+    outline: none;
+}
+.circle {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    border-radius: 50%;
+    border: 1px solid hsl(233, 11%, 84%);
+    cursor: pointer;
+}
+
+/*---------------------------------*/
+/* ACTIVITIES */
+/*---------------------------------*/
+#content {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 2px 2px 2px hsl(236, 33%, 92%);
+}
+.activity {
+    display: flex;
+    padding: 10px 20px;
+    border-bottom: 1px solid hsl(233, 11%, 84%);
+}
+
+.activity.checked {
+    text-decoration: line-through;
+    color: hsl(236, 9%, 61%);
+}
+.activity.checked .circle {
+    background-image: url('../images/icon-check.svg');
+    background-repeat: no-repeat;
+    background-position: top left;
+    background: linear-gradient(150deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+}
+
+.activity .circle {
+    margin-right: 10px;
+}
+/*---------------------------------*/
 /* FOOTER */
+/*---------------------------------*/
+.footer {
+    display: flex;
+    background: white;
+    justify-content: space-between;
+    padding: 10px 20px;
+    box-shadow: 2px 2px 2px hsl(236, 33%, 92%);
+    border-radius: 8px;
+}
+button {
+    background: transparent;
+    border: none;
+}
+
+/*---------------------------------*/
+/* FILTER */
+/*---------------------------------*/
+
+.filter {
+    margin-top: 20px;
+    background: white;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    box-shadow: 2px 2px 2px hsl(236, 33%, 92%);
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+.tip {
+    text-align: center;
+}
+
+/*---------------------------------*/
+/* FIXED BOTTOM */
 /*---------------------------------*/
 .attribution {
     font-size: 11px;
