@@ -4,7 +4,7 @@ This is a solution to the [Todo app challenge on Frontend Mentor](https://www.fr
   
 Also this is also a part of my first project in GitHub. I build the frontend using this interface provide by the Frontend Mentor while my cousin and friend build the Backend.
 
-[You can check the backend in this link](https://github.com/lucasaclima03)
+[You can check the backend in this link](https://github.com/lucasaclima03/todo-app-API)
 
 ## Table of contents
 
@@ -42,7 +42,7 @@ Users should be able to:
 
 ### Links
 
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [Netlify](https://blissful-colden-6de82d.netlify.app/)
 
 ## My process
 
