@@ -5,6 +5,18 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Josefin Sans', sans-serif;
+}
+/*---------------------------------*/
+/* BODY */
+/*---------------------------------*/
+body {
+    background-image: url('../images/bg-mobile-light.jpg');
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: 100%;
+
+    background-color: hsl(0, 0%, 98%);
 }
 
 /*---------------------------------*/
@@ -13,7 +25,20 @@
 .attribution {
     font-size: 11px;
     text-align: center;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 100%;
 }
 .attribution a {
     color: hsl(228, 45%, 44%);
+}
+
+/*---------------------------------*/
+/* MEDIA QUERIES */
+/*---------------------------------*/
+@media (min-width: 425px) {
+    body {
+        background-image: url('../images/bg-desktop-light.jpg');
+    }
 }
