@@ -48,8 +48,8 @@ function addEventListeners() {
     console.log("Circles: ", checkbox)
 
     close.forEach(button => {
-        button.addEventListener('click', () => {
-            console.log("Fechar")
+        button.addEventListener('click', (event) => {
+            console.log("Fechar", event.target.parentElement)
         })
     })
 
