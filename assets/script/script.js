@@ -66,4 +66,19 @@ function addEventListeners() {
     })
 }
 
+function darkMode() {
+    let icon = document.querySelector("#dark-toggle")
+
+    icon.addEventListener('click', () => {
+        icon.classList.toggle("dark-theme")
+
+        if(icon.classList.contains('dark-theme')) {
+            icon.src = "./assets/images/icon-sun.svg"
+        } else {
+            icon.src = "./assets/images/icon-moon.svg"
+        }
+    })
+}
+
 fetchData()
+darkMode()
