@@ -9,14 +9,30 @@
     font-size: 18px;
 }
 /*---------------------------------*/
+/* VARIABLES */
+/*---------------------------------*/
+:root {
+    --primary-color: hsl(0, 0%, 98%);
+    --secondary-color: hsl(235, 24%, 19%);
+
+    --background-body: url('../images/bg-mobile-light.jpg')
+}
+.dark-theme {
+    --primary-color: hsl(235, 24%, 19%);
+    --secondary-color: hsl(234, 39%, 85%);
+
+    --background-body: url('../images/bg-mobile-dark.jpg')
+}
+
+/*---------------------------------*/
 /* BODY */
 /*---------------------------------*/
 body {
-    background-image: url('../images/bg-mobile-light.jpg');
+    background-image: var(--background-body);
     background-position: top left;
     background-repeat: no-repeat;
     background-size: 100%;
-    background-color: hsl(0, 0%, 98%);
+    background-color: var(--primary-color);
     padding: 60px 30px;
 }
 
@@ -39,7 +55,7 @@ h1 {
 /* NEW TODO */
 /*---------------------------------*/
 .new-todo {
-    background: white;
+    background: var(--primary-color);
     display: flex;
     align-items: center;
     padding: 0 20px;
@@ -77,6 +93,7 @@ input:focus {
     padding: 10px 20px;
     border-bottom: 1px solid hsl(233, 11%, 84%);
     justify-content: space-between;
+    background-color: var(--primary-color);
 }
 .activity p {
     width: 100%;
