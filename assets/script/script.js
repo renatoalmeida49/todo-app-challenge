@@ -13,11 +13,13 @@ function fetchData() {
 function mountPage() {
     activities.forEach(activity => {
         let div = document.createElement('div')
-        let paragraph = document.createElement('p')
         let circle = document.createElement('div')
+        let paragraph = document.createElement('p')
+        let close = document.createElement('div')
 
         div.classList.add('activity')
         circle.classList.add('circle')
+        close.classList.add('close')
 
         paragraph.innerText = activity.title
 
@@ -32,10 +34,36 @@ function mountPage() {
 
         div.appendChild(circle)
         div.appendChild(paragraph)
+        div.appendChild(close)
         content.appendChild(div)
     })
+
+    addEventListeners()
 }
 
+function addEventListeners() {
+    let checkbox = document.querySelectorAll(".circle")
+    let close = document.querySelectorAll(".close")
 
+    console.log("Circles: ", checkbox)
+
+    close.forEach(button => {
+        button.addEventListener('click', () => {
+            console.log("Fechar")
+        })
+    })
+
+    let newTodo = document.querySelector('input') 
+    
+    newTodo.addEventListener('keydown', (event) => {
+        if(event.key === "Enter") {
+            let title = newTodo.value
+
+            console.log(title)
+
+            newTodo.value = ''
+        }
+    })
+}
 
 fetchData()
