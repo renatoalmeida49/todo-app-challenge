@@ -6,14 +6,17 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Josefin Sans', sans-serif;
-    font-size: 18px;
+    font-size: 12px;
 }
 /*---------------------------------*/
 /* VARIABLES */
 /*---------------------------------*/
 :root {
-    --primary-color: hsl(0, 0%, 98%);
-    --secondary-color: hsl(235, 24%, 19%);
+    --background-color: hsl(0, 0%, 98%);
+    --text-color: hsl(235, 19%, 35%);
+    --text-footer: hsl(236, 9%, 61%);
+
+    --box-shadow: hsl(236, 33%, 92%);
 
     --background-body: url('../images/bg-mobile-light.jpg')
 }
@@ -32,7 +35,7 @@ body {
     background-position: top left;
     background-repeat: no-repeat;
     background-size: 100%;
-    background-color: var(--primary-color);
+    background-color: var(--background-color);
     padding: 60px 30px;
 }
 
@@ -55,7 +58,7 @@ h1 {
 /* NEW TODO */
 /*---------------------------------*/
 .new-todo {
-    background: var(--primary-color);
+    background: var(--background-color);
     display: flex;
     align-items: center;
     padding: 0 20px;
@@ -86,14 +89,16 @@ input:focus {
 #content {
     background-color: white;
     border-radius: 8px;
-    box-shadow: 2px 2px 2px hsl(236, 33%, 92%);
+    overflow: auto;
+    box-shadow: 0px 8px 8px .5px var(--box-shadow);
 }
 .activity {
     display: flex;
     padding: 10px 20px;
     border-bottom: 1px solid hsl(233, 11%, 84%);
     justify-content: space-between;
-    background-color: var(--primary-color);
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 .activity p {
     width: 100%;
@@ -128,13 +133,15 @@ input:focus {
     display: flex;
     background: white;
     justify-content: space-between;
+    align-items: center;
     padding: 10px 20px;
-    box-shadow: 2px 2px 2px hsl(236, 33%, 92%);
-    border-radius: 8px;
+    color: var(--text-footer);
+    min-height: 41px;
 }
 button {
     background: transparent;
     border: none;
+    color: var(--text-footer)
 }
 
 /*---------------------------------*/
@@ -147,13 +154,17 @@ button {
     display: flex;
     justify-content: space-around;
     padding: 20px;
-    box-shadow: 2px 2px 2px hsl(236, 33%, 92%);
+    box-shadow: 0px 8px 8px .5px var(--box-shadow);
     margin-bottom: 20px;
     border-radius: 8px;
+    color: var(--text-footer);
+    font-weight: 700;
 }
 
 .tip {
     text-align: center;
+    color: var(--text-footer);
+    margin-top: 60px;
 }
 
 /*---------------------------------*/

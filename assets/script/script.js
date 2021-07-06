@@ -1,5 +1,5 @@
 let activities
-let content = document.querySelector("#content")
+let data = document.querySelector("#data")
 
 function fetchData() {
     fetch('../api.json')
@@ -35,7 +35,7 @@ function mountPage() {
         div.appendChild(circle)
         div.appendChild(paragraph)
         div.appendChild(close)
-        content.appendChild(div)
+        data.appendChild(div)
     })
 
     addEventListeners()
