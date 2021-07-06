@@ -18,11 +18,18 @@
 
     --box-shadow: hsl(236, 33%, 92%);
 
+    --background-body-color: #fff;
+
     --background-body: url('../images/bg-mobile-light.jpg')
 }
 .dark-theme {
-    --primary-color: hsl(235, 24%, 19%);
-    --secondary-color: hsl(234, 39%, 85%);
+    --background-color: hsl(233, 14%, 35%);
+    --text-color: hsl(234, 39%, 85%);
+    --text-footer: hsl(236, 9%, 61%);
+
+    --box-shadow: hsl(237, 14%, 26%);
+
+    --background-body-color: hsl(235, 21%, 11%);
 
     --background-body: url('../images/bg-mobile-dark.jpg')
 }
@@ -35,7 +42,7 @@ body {
     background-position: top left;
     background-repeat: no-repeat;
     background-size: 100%;
-    background-color: var(--background-color);
+    background-color: var(--background-body-color);
     padding: 60px 30px;
 }
 
@@ -75,8 +82,10 @@ h1 {
 
 input {
     padding: 10px;
+    background: var(--background-color);
     width: 100%;
     border: none;
+    color: var(--text-color);
 }
 input:focus {
     outline: none;
@@ -106,6 +115,7 @@ input:focus {
     border-bottom: 1px solid hsl(233, 11%, 84%);
     justify-content: space-between;
     background-color: var(--background-color);
+    align-items: center;
     color: var(--text-color);
 }
 .activity p {
@@ -140,7 +150,7 @@ input:focus {
 /*---------------------------------*/
 .footer {
     display: flex;
-    background: white;
+    background: var(--background-color);
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
@@ -158,7 +168,7 @@ button {
 /*---------------------------------*/
 
 .filter {
-    background: white;
+    background: var(--background-color);
     display: flex;
     justify-content: space-around;
     padding: 20px;
@@ -188,9 +198,10 @@ button {
     bottom: 0;
     right: 0;
     width: 100%;
+    color: var(--text-color);
 }
 .attribution a {
-    color: hsl(228, 45%, 44%);
+    color: var(--text-color);
 }
 
 /*---------------------------------*/
