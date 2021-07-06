@@ -42,8 +42,10 @@ body {
 .header {
     display: flex;
     width: 100%;
+    max-width: 600px;
     align-items: center;
     justify-content: space-between;
+    margin: 0 auto;
     margin-bottom: 20px;
 }
 
@@ -52,6 +54,11 @@ h1 {
     text-transform: uppercase;
     letter-spacing: 13px;
     font-size: 30px;
+}
+
+.app {
+    max-width: 600px;
+    margin: auto;
 }
 
 /*---------------------------------*/
@@ -151,16 +158,18 @@ button {
 /*---------------------------------*/
 
 .filter {
-    margin-top: 20px;
     background: white;
     display: flex;
     justify-content: space-around;
     padding: 20px;
     box-shadow: 0px 8px 8px .5px var(--box-shadow);
+    margin: 0 auto;
+    margin-top: 20px;
     margin-bottom: 20px;
     border-radius: 8px;
     color: var(--text-footer);
     font-weight: 700;
+    max-width: 600px;
 }
 
 .tip {
