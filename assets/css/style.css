@@ -19,8 +19,8 @@
     --box-shadow: hsl(236, 33%, 92%);
 
     --background-body-color: #fff;
-
-    --background-body: url('../images/bg-mobile-light.jpg')
+    --background-body: url('../images/bg-mobile-light.jpg');
+    --background-body-desktop: url('../images/bg-desktop-light.jpg');
 }
 .dark-theme {
     --background-color: hsl(233, 14%, 35%);
@@ -30,8 +30,8 @@
     --box-shadow: hsl(237, 14%, 26%);
 
     --background-body-color: hsl(235, 21%, 11%);
-
-    --background-body: url('../images/bg-mobile-dark.jpg')
+    --background-body: url('../images/bg-mobile-dark.jpg');
+    --background-body-desktop: url('../images/bg-desktop-dark.jpg');
 }
 
 /*---------------------------------*/
@@ -207,8 +207,8 @@ button {
 /*---------------------------------*/
 /* MEDIA QUERIES */
 /*---------------------------------*/
-@media (min-width: 425px) {
+@media (min-width: 624px) {
     body {
-        background-image: url('../images/bg-desktop-light.jpg');
+        background-image: var(--background-body-desktop);
     }
 }
