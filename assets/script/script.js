@@ -1,11 +1,12 @@
-let activities
+let activities = []
 let data = document.querySelector("#data")
 
 function fetchData() {
-    fetch('../api.json')
+    activities =[]
+    fetch('http://localhost/todo-app-api/api/getAll.php')
         .then(response => response.json())
         .then(response => {
-            activities = response.results
+            activities = response.result
             mountPage()
         })
 }
@@ -37,8 +38,6 @@ function mountPage() {
         div.appendChild(close)
         data.appendChild(div)
     })
-
-    addEventListeners()
 }
 
 function addEventListeners() {
@@ -57,11 +56,17 @@ function addEventListeners() {
     
     newTodo.addEventListener('keydown', (event) => {
         if(event.key === "Enter") {
-            let title = newTodo.value
+            let newActivity = {
+                title: ""
+            }
+            
+            newActivity.title = newTodo.value
 
-            console.log(title)
+            activities.push(newActivity)
 
             newTodo.value = ''
+
+            this.fetchData()
         }
     })
 }
@@ -83,3 +88,4 @@ function darkMode() {
 
 fetchData()
 darkMode()
+addEventListeners()
