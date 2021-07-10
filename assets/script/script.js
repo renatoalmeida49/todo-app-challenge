@@ -1,9 +1,11 @@
 let activities = []
 let data = document.querySelector("#data")
+let endpoint = 'http://localhost:5000/todos'
+let newTodo = document.querySelector('input') 
 
 function fetchData() {
     activities = []
-    fetch('http://localhost:5000/todos')
+    fetch(endpoint)
         .then(response => response.json())
         .then(response => {
             activities = response.todos
@@ -47,42 +49,58 @@ function mountPage() {
     addEventListeners()
 }
 
+function addTodo(event) {
+    if(event.key === "Enter") {           
+        fetch(endpoint, {
+            method: 'POST',
+            body: JSON.stringify({
+                title: newTodo.value
+            }),
+            headers: {
+                'Content-Type': 'application/json; charset=UTF-8',
+                "Accept": "application/json"
+            }
+        })
+            .then(response => {
+                console.log("Resposta: ", response)
+                fetchData()
+            }).catch(error => {
+                console.log("Erro POST: ", error)
+            })
+
+        newTodo.value = ''
+    }
+}
+
+function deleteTodo(event) {
+    let id = event.target.parentElement.getAttribute('data-id')
+
+    fetch(endpoint, {
+        method: 'DELETE',
+        body: JSON.stringify({id: id}),
+        headers: {
+            'Content-Type': 'application/json; charset=UTF-8',
+            "Accept": "application/json"
+        }
+    })
+        .then(response => {
+            console.log('Delete: ', response)
+            fetchData()
+        })
+        .catch(error => {
+            console.log('Erro delete: ', error)
+        })
+}
+
 function addEventListeners() {
     let checkbox = document.querySelectorAll(".circle")
     let close = document.querySelectorAll(".close")
 
     close.forEach(button => {
-        button.addEventListener('click', (event) => {
-            let id = event.target.parentElement.getAttribute('data-id')
-
-            console.log(id)
-        })
+        button.addEventListener('click', deleteTodo)
     })
-
-    let newTodo = document.querySelector('input') 
     
-    newTodo.addEventListener('keydown', (event) => {
-        if(event.key === "Enter") {           
-            fetch('http://localhost:5000/todos', {
-                method: 'POST',
-                body: JSON.stringify({
-                    title: newTodo.value
-                }),
-                headers: {
-                    'Content-Type': 'application/json; charset=UTF-8',
-                    "Accept": "application/json"
-                }
-            })
-                .then(response => {
-                    console.log("Resposta: ", response)
-                    fetchData()
-                }).catch(error => {
-                    console.log("Erro POST: ", error)
-                })
-
-            newTodo.value = ''
-        }
-    })
+    newTodo.addEventListener('keydown', addTodo)
 }
 
 function darkMode() {
