@@ -26,6 +26,7 @@ function mountPage() {
 
         div.classList.add('activity')
         div.setAttribute('data-id', activity.id)
+        div.setAttribute('data-status', activity.is_active)
         circle.classList.add('circle')
         close.classList.add('close')
 
@@ -92,12 +93,40 @@ function deleteTodo(event) {
         })
 }
 
+function updateTodo(event) {
+    let id = event.target.parentElement.getAttribute('data-id')
+    let status = event.target.parentElement.getAttribute('data-status')
+
+    fetch(endpoint, {
+        method: 'PATCH',
+        body: JSON.stringify({
+            id: id,
+            is_active: status
+        }),
+        headers: {
+            'Content-Type': 'application/json; charset=UTF-8',
+            "Accept": "application/json"
+        }
+    })
+        .then(response => {
+            console.log('Patch: ', response)
+            fetchData()
+        })
+        .catch(error => {
+            console.log('Erro patch: ', error)
+        })
+}
+
 function addEventListeners() {
     let checkbox = document.querySelectorAll(".circle")
     let close = document.querySelectorAll(".close")
 
     close.forEach(button => {
         button.addEventListener('click', deleteTodo)
+    })
+
+    checkbox.forEach(button => {
+        button.addEventListener('click', updateTodo)
     })
     
     newTodo.addEventListener('keydown', addTodo)
