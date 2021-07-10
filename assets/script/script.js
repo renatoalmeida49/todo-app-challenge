@@ -2,16 +2,20 @@ let activities = []
 let data = document.querySelector("#data")
 
 function fetchData() {
-    activities =[]
-    fetch('http://localhost/todo-app-api/api/getAll.php')
+    activities = []
+    fetch('http://localhost:5000/todos')
         .then(response => response.json())
         .then(response => {
-            activities = response.result
+            activities = response.todos
             mountPage()
         })
 }
 
 function mountPage() {
+    while(data.firstChild) {
+        data.removeChild(data.lastChild)
+    }
+
     activities.forEach(activity => {
         let div = document.createElement('div')
         let circle = document.createElement('div')
@@ -19,6 +23,7 @@ function mountPage() {
         let close = document.createElement('div')
 
         div.classList.add('activity')
+        div.setAttribute('data-id', activity.id)
         circle.classList.add('circle')
         close.classList.add('close')
 
@@ -38,35 +43,44 @@ function mountPage() {
         div.appendChild(close)
         data.appendChild(div)
     })
+
+    addEventListeners()
 }
 
 function addEventListeners() {
     let checkbox = document.querySelectorAll(".circle")
     let close = document.querySelectorAll(".close")
 
-    console.log("Circles: ", checkbox)
-
     close.forEach(button => {
         button.addEventListener('click', (event) => {
-            console.log("Fechar", event.target.parentElement)
+            let id = event.target.parentElement.getAttribute('data-id')
+
+            console.log(id)
         })
     })
 
     let newTodo = document.querySelector('input') 
     
     newTodo.addEventListener('keydown', (event) => {
-        if(event.key === "Enter") {
-            let newActivity = {
-                title: ""
-            }
-            
-            newActivity.title = newTodo.value
-
-            activities.push(newActivity)
+        if(event.key === "Enter") {           
+            fetch('http://localhost:5000/todos', {
+                method: 'POST',
+                body: JSON.stringify({
+                    title: newTodo.value
+                }),
+                headers: {
+                    'Content-Type': 'application/json; charset=UTF-8',
+                    "Accept": "application/json"
+                }
+            })
+                .then(response => {
+                    console.log("Resposta: ", response)
+                    fetchData()
+                }).catch(error => {
+                    console.log("Erro POST: ", error)
+                })
 
             newTodo.value = ''
-
-            this.fetchData()
         }
     })
 }
@@ -88,4 +102,3 @@ function darkMode() {
 
 fetchData()
 darkMode()
-addEventListeners()
