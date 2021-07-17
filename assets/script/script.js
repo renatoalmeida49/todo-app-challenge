@@ -27,13 +27,13 @@ function mountPage() {
 
         div.classList.add('activity')
         div.setAttribute('data-id', activity.id)
-        div.setAttribute('data-status', activity.is_active)
+        div.setAttribute('data-status', activity.isActive)
         circle.classList.add('circle')
         close.classList.add('close')
 
         paragraph.innerText = activity.title
 
-        switch(activity.is_active) {
+        switch(activity.isActive) {
             case 0:
                 div.classList.add('checked')
                 break;
@@ -102,7 +102,7 @@ function updateTodo(event) {
         method: 'PATCH',
         body: JSON.stringify({
             id: id,
-            is_active: status
+            isActive: status
         }),
         headers: {
             'Content-Type': 'application/json; charset=UTF-8',
