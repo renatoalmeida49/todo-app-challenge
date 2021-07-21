@@ -2,9 +2,9 @@
 
 This is a solution to the [Todo app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/todo-app-Su1_KokOW). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
   
-Also this is also a part of my first project in GitHub. I build the frontend using this interface provide by the Frontend Mentor while my cousin and friend build the Backend.
+Also this is also a part of my first project in GitHub. I build the frontend using this interface provided by the Frontend Mentor and the Backend in another repository, with my first API in Node.  
 
-[You can check the backend in this link](https://github.com/lucasaclima03/todo-app-API)
+[You can check the backend in this link](https://github.com/renatoalmeida49/todo-api)
 
 ## Table of contents
 
