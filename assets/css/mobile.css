@@ -1,0 +1,169 @@
+/*---------------------------------*/
+/* BODY */
+/*---------------------------------*/
+body {
+    background-image: var(--background-body);
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-color: var(--background-body-color);
+    padding: 60px 30px;
+}
+
+.header {
+    display: flex;
+    width: 100%;
+    max-width: 600px;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+h1 {
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 13px;
+    font-size: 30px;
+}
+
+.app {
+    max-width: 600px;
+    margin: auto;
+}
+
+/*---------------------------------*/
+/* NEW TODO */
+/*---------------------------------*/
+.new-todo {
+    background: var(--background-color);
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+input {
+    padding: 10px;
+    background: var(--background-color);
+    width: 100%;
+    border: none;
+    color: var(--text-color);
+}
+input:focus {
+    outline: none;
+}
+.circle {
+    width: 100%;
+    max-width: 20px;
+    height: 20px;
+    display: inline-block;
+    border-radius: 50%;
+    border: 1px solid hsl(233, 11%, 84%);
+    cursor: pointer;
+}
+
+/*---------------------------------*/
+/* ACTIVITIES */
+/*---------------------------------*/
+#content {
+    background-color: white;
+    border-radius: 8px;
+    overflow: auto;
+    box-shadow: 0px 8px 8px .5px var(--box-shadow);
+}
+.activity {
+    display: flex;
+    padding: 10px 20px;
+    border-bottom: 1px solid hsl(233, 11%, 84%);
+    justify-content: space-between;
+    background-color: var(--background-color);
+    align-items: center;
+    color: var(--text-color);
+}
+.activity p {
+    width: 100%;
+}
+
+.activity.checked {
+    text-decoration: line-through;
+    color: hsl(236, 9%, 61%);
+}
+.activity.checked .circle {
+    background-image: url('../images/icon-check.svg');
+    background-repeat: no-repeat;
+    background-position: top left;
+    background: linear-gradient(150deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+}
+
+.activity .circle {
+    margin-right: 10px;
+}
+.close {
+    background-image: url('../images/icon-cross.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    max-width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+/*---------------------------------*/
+/* FOOTER */
+/*---------------------------------*/
+.footer {
+    display: flex;
+    background: var(--background-color);
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    color: var(--text-footer);
+    min-height: 41px;
+}
+button {
+    background: transparent;
+    border: none;
+    color: var(--text-footer)
+}
+
+/*---------------------------------*/
+/* FILTER */
+/*---------------------------------*/
+
+.filter {
+    background: var(--background-color);
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    box-shadow: 0px 8px 8px .5px var(--box-shadow);
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    color: var(--text-footer);
+    font-weight: 700;
+    max-width: 600px;
+}
+
+.tip {
+    text-align: center;
+    color: var(--text-footer);
+    margin-top: 60px;
+}
+
+/*---------------------------------*/
+/* FIXED BOTTOM */
+/*---------------------------------*/
+.attribution {
+    font-size: 11px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    color: var(--text-color);
+}
+.attribution a {
+    color: var(--text-color);
+}

@@ -1,0 +1,35 @@
+/*---------------------------------*/
+/* CSS RESET */
+/*---------------------------------*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 12px;
+}
+/*---------------------------------*/
+/* VARIABLES */
+/*---------------------------------*/
+:root {
+    --background-color: hsl(0, 0%, 98%);
+    --text-color: hsl(235, 19%, 35%);
+    --text-footer: hsl(236, 9%, 61%);
+
+    --box-shadow: hsl(236, 33%, 92%);
+
+    --background-body-color: #fff;
+    --background-body: url('../images/bg-mobile-light.jpg');
+    --background-body-desktop: url('../images/bg-desktop-light.jpg');
+}
+.dark-theme {
+    --background-color: hsl(233, 14%, 35%);
+    --text-color: hsl(234, 39%, 85%);
+    --text-footer: hsl(236, 9%, 61%);
+
+    --box-shadow: hsl(237, 14%, 26%);
+
+    --background-body-color: hsl(235, 21%, 11%);
+    --background-body: url('../images/bg-mobile-dark.jpg');
+    --background-body-desktop: url('../images/bg-desktop-dark.jpg');
+}
