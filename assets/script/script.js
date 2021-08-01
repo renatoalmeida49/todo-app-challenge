@@ -63,9 +63,21 @@ function addTodo(event) {
                 "Accept": "application/json"
             }
         })
+            .then(response => response.json())
             .then(response => {
                 console.log("Resposta: ", response)
-                fetchData()
+
+                const post = {
+                    id: response.data.id,
+                    isActive: response.data.isActive,
+                    createdAt: response.data.createdAt,
+                    title: response.data.title,
+                    updatedAt: response.data.updatedAt
+                }
+                
+                activities.push(post)
+
+                mountPage()
             }).catch(error => {
                 console.log("Erro POST: ", error)
             })
