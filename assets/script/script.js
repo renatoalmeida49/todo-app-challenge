@@ -174,6 +174,8 @@ function addEventListeners() {
     filters.forEach(filter => {
         filter.addEventListener('click', getFilter)
     })
+
+    document.querySelector('#clear-completed').addEventListener('click', clearCompleted)
 }
 
 function getFilter(event) {
@@ -205,5 +207,35 @@ function activeFilter() {
     mountPage()
 }
 
+function clearCompleted() {
+    const toClear = activities.filter(task => {
+        return task.isActive == 0
+    })
+
+    toClear.forEach(taskToClear => {
+        fetch(endpoint, {
+            method: 'DELETE',
+            body: JSON.stringify({id: taskToClear.id}),
+            headers: {
+                'Content-Type': 'application/json; charset=UTF-8',
+                "Accept": "application/json"
+            }
+        })
+            .then(response => {
+                console.log('Delete: ', response)
+                
+                const taskToDelete = activities.find(task => task.id == taskToClear.id)
+    
+                const index = activities.findIndex(task => task.id === taskToDelete.id)
+                
+                activities.splice(index, 1)
+                
+                activeFilter()
+            })
+            .catch(error => {
+                console.log('Erro delete: ', error)
+            })
+    })
+}
 fetchData()
 darkMode()
