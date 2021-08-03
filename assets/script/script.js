@@ -1,6 +1,7 @@
 import darkMode from './modules/dark-mode.js'
 
 let activities = []
+let showTasks = []
 let data = document.querySelector("#data")
 let endpoint = 'http://localhost:5000/todos'
 // let endpoint = 'https://rest-api-todo-main.herokuapp.com/todos'
@@ -12,7 +13,8 @@ function fetchData() {
         .then(response => response.json())
         .then(response => {
             activities = response
-            mountPage()
+
+            activeFilter('all')
         })
 }
 
@@ -21,7 +23,7 @@ function mountPage() {
         data.removeChild(data.lastChild)
     }
 
-    activities.forEach(activity => {
+    showTasks.forEach(activity => {
         let div = document.createElement('div')
         let circle = document.createElement('div')
         let paragraph = document.createElement('p')
@@ -67,8 +69,6 @@ function addTodo(event) {
         })
             .then(response => response.json())
             .then(response => {
-                console.log("Resposta: ", response)
-
                 const post = {
                     id: response.data.id,
                     isActive: response.data.isActive,
@@ -156,6 +156,40 @@ function addEventListeners() {
     })
     
     newTodo.addEventListener('keydown', addTodo)
+
+    let filters = document.querySelectorAll('.filter')
+
+    filters.forEach(filter => {
+        filter.addEventListener('click', getFilter)
+    })
+}
+
+function getFilter(event) {
+    let att = event.target.getAttribute('data-filter')
+    activeFilter(att)
+}
+
+function activeFilter(string) {
+
+    if (string === 'all') {
+        showTasks = activities
+    }
+
+    if (string === 'active') {
+        showTasks = activities.filter(task => {
+            return task.isActive == 1
+        })
+    }
+
+    if (string === 'completed') {
+        showTasks = activities.filter(task => {
+            return task.isActive == 0
+        })
+    }
+
+    console.log('Função filter com a string ', string)
+
+    mountPage()
 }
 
 fetchData()
