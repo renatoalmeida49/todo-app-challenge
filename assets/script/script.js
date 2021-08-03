@@ -2,6 +2,7 @@ import darkMode from './modules/dark-mode.js'
 
 let activities = []
 let showTasks = []
+let tasksLeft = 0
 let data = document.querySelector("#data")
 let endpoint = 'http://localhost:5000/todos'
 // let endpoint = 'https://rest-api-todo-main.herokuapp.com/todos'
@@ -52,7 +53,17 @@ function mountPage() {
         data.appendChild(div)
     })
 
+    document.querySelector('#total').innerText = counter()
+
     addEventListeners()
+}
+
+function counter() {
+    const toComplete = showTasks.filter(task => {
+        return task.isActive == 1
+    })
+
+    return toComplete.length
 }
 
 function addTodo(event) {
