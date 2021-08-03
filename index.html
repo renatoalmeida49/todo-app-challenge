@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   
   <title>Frontend Mentor | Todo app</title>
 </head>
@@ -29,28 +30,35 @@
         <!-- All activites comes here -->
       </div>
       <div class="footer">
-        <div>5 itens left</div>
-        <button>Clear Completed</button>
+        <div><span id="total">5</span> itens left</div>
+        <button id="clear-completed">Clear Completed</button>
       </div>
     </div>
 
     
   </div>
 
-  <div class="filter">
-    <span>All</span>
-    <span>Active</span>
-    <span>Completed</span>
+  <div class="filters">
+    <span class="filter active" data-filter="all">All</span>
+    <span class="filter" data-filter="active">Active</span>
+    <span class="filter" data-filter="completed">Completed</span>
   </div>
 
   <p class="tip">Drag and drop to reorder list</p>
 
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. <br/>
-    Frontend by <a href="https://www.renatonovaes.dev">Renato Novaes</a>.<br/>
-    Backend by <a href="#">Lucas Lima</a>.
+    Frontend by <a href="https://www.renatonovaes.dev">Renato Novaes</a>
   </div>
 
-  <script src="./assets/script/script.js"></script>
+  <script type="module" src="./assets/script/script.js"></script>
+
+  <script>
+    const wrapper = document.querySelector("#data")
+
+    new Sortable(wrapper, {
+      animation: 150
+    })
+  </script>
 </body>
 </html>

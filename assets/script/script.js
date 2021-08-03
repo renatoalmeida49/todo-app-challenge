@@ -1,8 +1,13 @@
+import darkMode from './modules/dark-mode.js'
+
 let activities = []
+let showTasks = []
+let selectedFilter = 'all'
 let data = document.querySelector("#data")
 // let endpoint = 'http://localhost:5000/todos'
 let endpoint = 'https://rest-api-todo-main.herokuapp.com/todos'
 let newTodo = document.querySelector('input') 
+let filters = document.querySelectorAll('.filter')
 
 function fetchData() {
     activities = []
@@ -10,7 +15,8 @@ function fetchData() {
         .then(response => response.json())
         .then(response => {
             activities = response
-            mountPage()
+
+            activeFilter('all')
         })
 }
 
@@ -19,7 +25,7 @@ function mountPage() {
         data.removeChild(data.lastChild)
     }
 
-    activities.forEach(activity => {
+    showTasks.forEach(activity => {
         let div = document.createElement('div')
         let circle = document.createElement('div')
         let paragraph = document.createElement('p')
@@ -48,7 +54,17 @@ function mountPage() {
         data.appendChild(div)
     })
 
+    document.querySelector('#total').innerText = counter()
+
     addEventListeners()
+}
+
+function counter() {
+    const toComplete = showTasks.filter(task => {
+        return task.isActive == 1
+    })
+
+    return toComplete.length
 }
 
 function addTodo(event) {
@@ -63,9 +79,19 @@ function addTodo(event) {
                 "Accept": "application/json"
             }
         })
+            .then(response => response.json())
             .then(response => {
-                console.log("Resposta: ", response)
-                fetchData()
+                const post = {
+                    id: response.data.id,
+                    isActive: response.data.isActive,
+                    createdAt: response.data.createdAt,
+                    title: response.data.title,
+                    updatedAt: response.data.updatedAt
+                }
+                
+                activities.push(post)
+
+                activeFilter()
             }).catch(error => {
                 console.log("Erro POST: ", error)
             })
@@ -87,7 +113,14 @@ function deleteTodo(event) {
     })
         .then(response => {
             console.log('Delete: ', response)
-            fetchData()
+            
+            const taskToDelete = activities.find(task => task.id == id)
+
+            const index = activities.findIndex(task => task.id === taskToDelete.id)
+            
+            activities.splice(index, 1)
+            
+            activeFilter()
         })
         .catch(error => {
             console.log('Erro delete: ', error)
@@ -109,9 +142,14 @@ function updateTodo(event) {
             "Accept": "application/json"
         }
     })
-        .then(response => {
-            console.log('Patch: ', response)
-            fetchData()
+        .then(() => {
+            const taskToUpdate = activities.find(task => task.id == id)
+
+            const index = activities.findIndex(task => task.id === taskToUpdate.id)
+            
+            activities[index].isActive = activities[index].isActive == 1 ? 0 : 1
+
+            activeFilter()
         })
         .catch(error => {
             console.log('Erro patch: ', error)
@@ -131,22 +169,76 @@ function addEventListeners() {
     })
     
     newTodo.addEventListener('keydown', addTodo)
+
+    filters.forEach(filter => {
+        filter.addEventListener('click', getFilter)
+    })
+
+    document.querySelector('#clear-completed').addEventListener('click', clearCompleted)
 }
 
-function darkMode() {
-    let icon = document.querySelector("#dark-toggle")
+function getFilter(event) {
+    filters.forEach(filter => {
+        filter.classList.remove('active')
+    })
 
-    icon.addEventListener('click', () => {
-        document.body.classList.toggle("dark-theme")
-        icon.classList.toggle("dark-theme")
+    event.target.classList.add('active')
 
-        if(icon.classList.contains('dark-theme')) {
-            icon.src = "./assets/images/icon-sun.svg"
-        } else {
-            icon.src = "./assets/images/icon-moon.svg"
-        }
+    let att = event.target.getAttribute('data-filter')
+    selectedFilter = att
+
+    activeFilter()
+}
+
+function activeFilter() {
+    if (selectedFilter === 'all') {
+        showTasks = activities
+    }
+
+    if (selectedFilter === 'active') {
+        showTasks = activities.filter(task => {
+            return task.isActive == 1
+        })
+    }
+
+    if (selectedFilter === 'completed') {
+        showTasks = activities.filter(task => {
+            return task.isActive == 0
+        })
+    }
+
+    mountPage()
+}
+
+function clearCompleted() {
+    const toClear = activities.filter(task => {
+        return task.isActive == 0
+    })
+
+    toClear.forEach(taskToClear => {
+        fetch(endpoint, {
+            method: 'DELETE',
+            body: JSON.stringify({id: taskToClear.id}),
+            headers: {
+                'Content-Type': 'application/json; charset=UTF-8',
+                "Accept": "application/json"
+            }
+        })
+            .then(response => {
+                console.log('Delete: ', response)
+                
+                const taskToDelete = activities.find(task => task.id == taskToClear.id)
+    
+                const index = activities.findIndex(task => task.id === taskToDelete.id)
+                
+                activities.splice(index, 1)
+                
+                activeFilter()
+            })
+            .catch(error => {
+                console.log('Erro delete: ', error)
+            })
     })
 }
-
 fetchData()
 darkMode()
