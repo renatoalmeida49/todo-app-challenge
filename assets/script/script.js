@@ -7,6 +7,7 @@ let data = document.querySelector("#data")
 let endpoint = 'http://localhost:5000/todos'
 // let endpoint = 'https://rest-api-todo-main.herokuapp.com/todos'
 let newTodo = document.querySelector('input') 
+let filters = document.querySelectorAll('.filter')
 
 function fetchData() {
     activities = []
@@ -169,8 +170,6 @@ function addEventListeners() {
     
     newTodo.addEventListener('keydown', addTodo)
 
-    let filters = document.querySelectorAll('.filter')
-
     filters.forEach(filter => {
         filter.addEventListener('click', getFilter)
     })
@@ -179,6 +178,12 @@ function addEventListeners() {
 }
 
 function getFilter(event) {
+    filters.forEach(filter => {
+        filter.classList.remove('active')
+    })
+
+    event.target.classList.add('active')
+
     let att = event.target.getAttribute('data-filter')
     selectedFilter = att
 
@@ -201,8 +206,6 @@ function activeFilter() {
             return task.isActive == 0
         })
     }
-
-    console.log('Função filter com a string ', selectedFilter)
 
     mountPage()
 }
