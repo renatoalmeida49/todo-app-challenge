@@ -149,6 +149,9 @@ button {
 .filter {
     cursor: pointer;
 }
+.filter.active {
+    color: hsl(220, 98%, 61%);
+}
 
 .tip {
     text-align: center;
