@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   
   <title>Frontend Mentor | Todo app</title>
 </head>
@@ -51,5 +52,13 @@
   </div>
 
   <script type="module" src="./assets/script/script.js"></script>
+
+  <script>
+    const wrapper = document.querySelector("#data")
+
+    new Sortable(wrapper, {
+      animation: 150
+    })
+  </script>
 </body>
 </html>
