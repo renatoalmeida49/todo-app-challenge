@@ -131,7 +131,7 @@ button {
 /* FILTER */
 /*---------------------------------*/
 
-.filter {
+.filters {
     background: var(--background-color);
     display: flex;
     justify-content: space-around;
@@ -144,6 +144,10 @@ button {
     color: var(--text-footer);
     font-weight: 700;
     max-width: 600px;
+}
+
+.filter {
+    cursor: pointer;
 }
 
 .tip {
