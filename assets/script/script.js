@@ -2,7 +2,7 @@ import darkMode from './modules/dark-mode.js'
 
 let activities = []
 let showTasks = []
-let tasksLeft = 0
+let selectedFilter = 'all'
 let data = document.querySelector("#data")
 let endpoint = 'http://localhost:5000/todos'
 // let endpoint = 'https://rest-api-todo-main.herokuapp.com/todos'
@@ -90,7 +90,7 @@ function addTodo(event) {
                 
                 activities.push(post)
 
-                mountPage()
+                activeFilter()
             }).catch(error => {
                 console.log("Erro POST: ", error)
             })
@@ -118,7 +118,8 @@ function deleteTodo(event) {
             const index = activities.findIndex(task => task.id === taskToDelete.id)
             
             activities.splice(index, 1)
-            mountPage()
+            
+            activeFilter()
         })
         .catch(error => {
             console.log('Erro delete: ', error)
@@ -147,7 +148,7 @@ function updateTodo(event) {
             
             activities[index].isActive = activities[index].isActive == 1 ? 0 : 1
 
-            mountPage()
+            activeFilter()
         })
         .catch(error => {
             console.log('Erro patch: ', error)
@@ -177,28 +178,29 @@ function addEventListeners() {
 
 function getFilter(event) {
     let att = event.target.getAttribute('data-filter')
-    activeFilter(att)
+    selectedFilter = att
+
+    activeFilter()
 }
 
-function activeFilter(string) {
-
-    if (string === 'all') {
+function activeFilter() {
+    if (selectedFilter === 'all') {
         showTasks = activities
     }
 
-    if (string === 'active') {
+    if (selectedFilter === 'active') {
         showTasks = activities.filter(task => {
             return task.isActive == 1
         })
     }
 
-    if (string === 'completed') {
+    if (selectedFilter === 'completed') {
         showTasks = activities.filter(task => {
             return task.isActive == 0
         })
     }
 
-    console.log('Função filter com a string ', string)
+    console.log('Função filter com a string ', selectedFilter)
 
     mountPage()
 }
