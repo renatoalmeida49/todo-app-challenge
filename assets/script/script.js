@@ -99,7 +99,13 @@ function deleteTodo(event) {
     })
         .then(response => {
             console.log('Delete: ', response)
-            fetchData()
+            
+            const taskToDelete = activities.find(task => task.id == id)
+
+            const index = activities.findIndex(task => task.id === taskToDelete.id)
+            
+            activities.splice(index, 1)
+            mountPage()
         })
         .catch(error => {
             console.log('Erro delete: ', error)
