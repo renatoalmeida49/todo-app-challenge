@@ -129,9 +129,14 @@ function updateTodo(event) {
             "Accept": "application/json"
         }
     })
-        .then(response => {
-            console.log('Patch: ', response)
-            fetchData()
+        .then(() => {
+            const taskToUpdate = activities.find(task => task.id == id)
+
+            const index = activities.findIndex(task => task.id === taskToUpdate.id)
+            
+            activities[index].isActive = activities[index].isActive == 1 ? 0 : 1
+
+            mountPage()
         })
         .catch(error => {
             console.log('Erro patch: ', error)
