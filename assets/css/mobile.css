@@ -121,10 +121,11 @@ input:focus {
     color: var(--text-footer);
     min-height: 41px;
 }
-button {
+#clear-completed {
     background: transparent;
     border: none;
-    color: var(--text-footer)
+    color: var(--text-footer);
+    cursor: pointer;
 }
 
 /*---------------------------------*/
