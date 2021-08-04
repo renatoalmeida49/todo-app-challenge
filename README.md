@@ -38,7 +38,10 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![](./assets/screenshots/desktop-light.png)
+![](./assets/screenshots/desktop-dark.png)
+![](./assets/screenshots/mobile-light.png)
+![](./assets/screenshots/mobile-dark.png)
 
 ### Links
 
@@ -52,32 +55,32 @@ Users should be able to:
 - CSS custom properties
 - Flexbox
 - Mobile-first workflow
+- Sortable
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+I work with Vue in all my projects. But for this one I decided to build only with JS. And I could see the challenges of the use this technology without a framework.  
+  
+The dark mode was something completely new for me and I will study harder to optimize this feature.
+
+At some point in the project I started to use git flow. Frow now on I will only use git flow for this and future projects.
+
+Also I decided to go one step further and start my studies with Node JS to build the backend of this application.
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
-
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+In my script.js I repeat myself in some points. I must apply the concept of DRY.
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
-
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
+- [Sortable](https://cdnjs.com/libraries/Sortable) - I must confess: in the end of the project I was tired, so I decided to use a library to the 'drag and drop' bonus challlenge.
+- [Array Methods](https://www.freecodecamp.org/news/the-javascript-array-handbook/) - There are a lot of methods and ways to work with arrays and here is a very good link with a very good resume about some of them.
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
+- Website - [Renato](https://www.renatonovaes.dev)
+- Linkedin - [@yourusername](https://www.linkedin.com.br/in/renatonovaes49)
 
 ## Acknowledgments
 
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
+My friend Rafael Rodrigues always with good insights about the project and design and Matheus Henryk with valious tips about the UX.
